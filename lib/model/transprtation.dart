@@ -23,12 +23,14 @@ class GasFeeCalculatorData extends Equatable {
   final int fuelConsumption;
   final int startTrip;
   final int endTrip;
+  final int litter;
 
   const GasFeeCalculatorData(
       {required this.fuelConsumption,
       required this.startTrip,
-      required this.endTrip});
+      required this.endTrip,
+      required this.litter});
 
   @override
-  List<Object> get props => [fuelConsumption, startTrip, endTrip];
+  List<Object> get props => [fuelConsumption, startTrip, endTrip, litter];
 }

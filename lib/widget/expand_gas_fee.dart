@@ -13,8 +13,8 @@ class ExpansionGasFee extends StatelessWidget {
       title: const Text("List view"),
       children: [
         BlocBuilder<GasFeeCubit, GasFeeCalculatorState>(
-          builder: ((context, state) =>
-              Text(context.read<GasFeeCubit>().calculateGasFee().toString())),
+          builder: ((context, state) => Text(
+              "${context.read<GasFeeCubit>().calculateGasFee().toString()} yen")),
         )
       ],
     );

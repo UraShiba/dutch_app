@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class GasFeeCubit extends Cubit<GasFeeCalculatorState> {
   GasFeeCubit()
       : super(GasFeeCalculatorState(const GasFeeCalculatorData(
-            fuelConsumption: 1, startTrip: 0, endTrip: 0)));
+            fuelConsumption: 1, startTrip: 0, endTrip: 0, litter: 0)));
 
   void addGasFeeCalculatorData(GasFeeCalculatorData data) {
     emit(GasFeeCalculatorState(data));
@@ -15,7 +15,9 @@ class GasFeeCubit extends Cubit<GasFeeCalculatorState> {
   int calculateGasFee() {
     final int gasFee;
     final GasFeeCalculatorData data = state.gasFeeCalculatorData;
-    gasFee = ((data.endTrip - data.startTrip) / data.fuelConsumption).round();
+    gasFee =
+        (((data.endTrip - data.startTrip) / data.fuelConsumption) * data.litter)
+            .round();
     return gasFee;
   }
 }

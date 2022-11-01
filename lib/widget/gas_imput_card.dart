@@ -12,6 +12,7 @@ class GasInputCard extends StatelessWidget {
     final _fuelConsumptionController = TextEditingController();
     final _startConsumptionController = TextEditingController();
     final _endConsumptionController = TextEditingController();
+    final _litter = TextEditingController();
 
     return Card(
       child: Padding(
@@ -19,6 +20,19 @@ class GasInputCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text("litter"),
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: TextFormField(
+                    controller: _litter,
+                  ),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -65,8 +79,8 @@ class GasInputCard extends StatelessWidget {
                                 int.parse(_fuelConsumptionController.text),
                             startTrip:
                                 int.parse(_startConsumptionController.text),
-                            endTrip:
-                                int.parse(_endConsumptionController.text)));
+                            endTrip: int.parse(_endConsumptionController.text),
+                            litter: int.parse(_litter.text)));
                   },
                   child: const Text("Add")),
             )
