@@ -12,6 +12,10 @@ class MemberCubit extends Cubit<List<String>> {
     return state;
   }
 
+  int getPersonNumber() {
+    return state.length;
+  }
+
   void removePerson(int number) {
 // To be implemented
   }
