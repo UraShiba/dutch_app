@@ -10,13 +10,6 @@ class HighwayToolCubit extends Cubit<List<int>> {
     emit(List.of(state));
   }
 
-  void calculateHighwayTool() {
-    sum = 0;
-    for (int i = 0; i < state.length; i++) {
-      sum += state[i];
-    }
-  }
-
   void removeProduct(int number) {
     // To be implemented
     // state.removeWhere((element) => element == number);
