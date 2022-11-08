@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-class InputtedCard extends StatelessWidget {
-  const InputtedCard({Key? key, required this.number, required this.value})
+class EnteredItemCard extends StatelessWidget {
+  const EnteredItemCard({Key? key, this.number, required this.value})
       : super(key: key);
 
-  final int number;
-  final int value;
+  final int? number;
+  final String value;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color.fromARGB(255, 153, 211, 221),
+      color: const Color((0xFFF6F9FC)),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("No. ${number.toString()}"),
-            Text("${value.toString()} yen"),
+            if (number != null) Text("${(number! + 1).toString()}. "),
+            Text(value),
           ],
         ),
       ),

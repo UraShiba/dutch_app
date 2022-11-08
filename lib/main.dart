@@ -1,4 +1,4 @@
-import 'package:dutch_app/home_page.dart';
+import 'package:dutch_app/calculate_page/calculate_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,10 +11,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePage(),
+      home: Scaffold(
+          backgroundColor: const Color(0xFFFEFEFF),
+          appBar: AppBar(
+            title: const Text(
+              "Dutch app",
+              style: TextStyle(color: Color(0xFF627893)),
+            ),
+            backgroundColor: const Color((0xFFF6F9FC)),
+          ),
+          body: const CalculatePage()),
     );
   }
 }
