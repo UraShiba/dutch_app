@@ -3,10 +3,13 @@ import 'package:dutch_app/bloc/gas_fee/gas_fee_cubit.dart';
 import 'package:dutch_app/bloc/highway_tool/highway_tool_cubit.dart';
 import 'package:dutch_app/bloc/history/history_cubit.dart';
 import 'package:dutch_app/bloc/member/member_cubit.dart';
+import 'package:dutch_app/bloc/parking_fee/parking_fee_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
+import 'package:dutch_app/calculate_page/widget/expense_items/parking_fee_listview.dart';
 import 'package:dutch_app/calculate_page/widget/input_card/date_pick_card.dart';
 import 'package:dutch_app/calculate_page/widget/expense_items/member_listview.dart';
 import 'package:dutch_app/calculate_page/widget/input_card/member_input_card.dart';
+import 'package:dutch_app/calculate_page/widget/input_card/parking_fee_card.dart';
 import 'package:dutch_app/calculate_page/widget/input_card/price_per_person_card.dart';
 import 'package:dutch_app/calculate_page/widget/expense_items/gas_fee.dart';
 import 'package:dutch_app/calculate_page/widget/expense_items/highway_tool_listview.dart';
@@ -41,6 +44,9 @@ class CalculatePage extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => HistoryCubit(),
+        ),
+        BlocProvider(
+          create: (_) => ParkingFeeCubit(),
         )
       ],
       child: SingleChildScrollView(
@@ -54,6 +60,9 @@ class CalculatePage extends StatelessWidget {
             ),
             TopicSection(
               enteredItemCard: GasInputCard(gasFee: GasFee()),
+            ),
+            TopicSection(
+              enteredItemCard: ParkingFeeCard(listView: ParkingFeeListview()),
             ),
             TopicSection(
               enteredItemCard: MemberInputCard(listView: MemberListView()),

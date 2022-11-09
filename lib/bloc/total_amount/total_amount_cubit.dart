@@ -24,7 +24,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // }
 
 class TotalAmountCubit extends Cubit<TotalAmount> {
-  TotalAmountCubit() : super(const TotalAmount(sumGas: 0, sumHighwayTool: 0));
+  TotalAmountCubit()
+      : super(
+            const TotalAmount(sumGas: 0, sumHighwayTool: 0, sumParkingFee: 0));
   int sum = 0;
 
   void addFeeList(TotalAmount fee) {
@@ -36,7 +38,7 @@ class TotalAmountCubit extends Cubit<TotalAmount> {
   }
 
   int calculateTotalAmount() {
-    sum = state.sumGas! + state.sumHighwayTool!;
+    sum = state.sumGas! + state.sumHighwayTool! + state.sumParkingFee!;
     return sum;
   }
 
