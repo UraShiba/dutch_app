@@ -46,8 +46,11 @@ class HighwayToolInputCard extends StatelessWidget {
                         context
                             .read<HighwayToolCubit>()
                             .addHighwayTool((int.parse(value)));
-                        context.read<TotalAmountCubit>().addFeeList(totalAmount
-                            .copyWith(sumHighwayTool: int.parse(value)));
+                        context.read<TotalAmountCubit>().addFeeList(
+                            totalAmount.copyWith(
+                                sumHighwayTool: context
+                                    .read<HighwayToolCubit>()
+                                    .getHighwayTool()));
                         context.read<TotalAmountCubit>().calculateTotalAmount();
                       }),
                 ),

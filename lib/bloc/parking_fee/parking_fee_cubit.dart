@@ -17,6 +17,10 @@ class ParkingFeeCubit extends Cubit<List<int>> {
   }
 
   int getParkingFee() {
+    sum = 0;
+    for (int i = 0; i < state.length; i++) {
+      sum += state[i];
+    }
     return sum;
   }
 }

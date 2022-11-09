@@ -45,8 +45,11 @@ class ParkingFeeCard extends StatelessWidget {
                         context
                             .read<ParkingFeeCubit>()
                             .addParkingFee((int.parse(value)));
-                        context.read<TotalAmountCubit>().addFeeList(totalAmount
-                            .copyWith(sumParkingFee: int.parse(value)));
+                        context.read<TotalAmountCubit>().addFeeList(
+                            totalAmount.copyWith(
+                                sumParkingFee: context
+                                    .read<ParkingFeeCubit>()
+                                    .getParkingFee()));
                         context.read<TotalAmountCubit>().calculateTotalAmount();
                       }),
                 ),
