@@ -89,6 +89,9 @@ class GasInputCard extends StatelessWidget {
                     backgroundColor: Colors.black,
                   ),
                   onPressed: () {
+                    final totalAmount =
+                        context.read<TotalAmountCubit>().getTotalAmount();
+
                     context.read<GasFeeCubit>().addGasFeeCalculatorData(
                         GasFeeCalculatorData(
                             fuelConsumption:
@@ -98,9 +101,9 @@ class GasInputCard extends StatelessWidget {
                             endTrip: int.parse(_endConsumptionController.text),
                             litter: int.parse(_litter.text)));
                     context.read<GasFeeCubit>().calculateGasFee();
-                    context
-                        .read<TotalAmountCubit>()
-                        .addFeeList(context.read<GasFeeCubit>().gasFee);
+                    context.read<TotalAmountCubit>().addFeeList(
+                        totalAmount.copyWith(
+                            sumGas: context.read<GasFeeCubit>().getGasFee()));
                     context.read<TotalAmountCubit>().calculateTotalAmount();
                   },
                   child: const Text("Add gas fee")),

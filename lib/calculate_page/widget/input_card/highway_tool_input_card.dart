@@ -14,6 +14,7 @@ class HighwayToolInputCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     final _editingController = TextEditingController();
+
     return Card(
       color: const Color((0xFFF6F9FC)),
       child: Padding(
@@ -39,12 +40,14 @@ class HighwayToolInputCard extends StatelessWidget {
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       controller: _editingController,
                       onFieldSubmitted: (value) {
+                        final totalAmount =
+                            context.read<TotalAmountCubit>().getTotalAmount();
+
                         context
                             .read<HighwayToolCubit>()
                             .addHighwayTool((int.parse(value)));
-                        context
-                            .read<TotalAmountCubit>()
-                            .addFeeList(int.parse(value));
+                        context.read<TotalAmountCubit>().addFeeList(totalAmount
+                            .copyWith(sumHighwayTool: int.parse(value)));
                         context.read<TotalAmountCubit>().calculateTotalAmount();
                       }),
                 ),

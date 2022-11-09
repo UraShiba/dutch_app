@@ -1,5 +1,6 @@
 import 'package:dutch_app/bloc/member/member_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
+import 'package:dutch_app/model/total_amount.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +9,7 @@ class PricePerPersonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TotalAmountCubit, List<int>>(
+    return BlocBuilder<TotalAmountCubit, TotalAmount>(
         builder: ((context, state) => Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
