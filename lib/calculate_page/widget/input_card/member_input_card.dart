@@ -39,6 +39,18 @@ class MemberInputCard extends StatelessWidget {
                 ),
               ],
             ),
+            Center(
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                  ),
+                  onPressed: () {
+                    context
+                        .read<MemberCubit>()
+                        .addMember(_editingController.value.text);
+                  },
+                  child: const Text("Add member")),
+            ),
             listView
           ],
         ),
