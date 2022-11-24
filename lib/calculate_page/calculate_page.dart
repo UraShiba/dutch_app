@@ -43,9 +43,6 @@ class CalculatePage extends StatelessWidget {
           create: (_) => DatePickCubit(),
         ),
         BlocProvider(
-          create: (_) => HistoryCubit(),
-        ),
-        BlocProvider(
           create: (_) => ParkingFeeCubit(),
         )
       ],
