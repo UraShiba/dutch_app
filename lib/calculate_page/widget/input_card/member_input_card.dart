@@ -13,7 +13,7 @@ class MemberInputCard extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     final _editingController = TextEditingController();
     return Card(
-      color: const Color((0xFFF6F9FC)),
+      color: cardColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -43,7 +43,7 @@ class MemberInputCard extends StatelessWidget {
             Center(
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF6667AB),
+                    backgroundColor: buttonColor,
                   ),
                   onPressed: () {
                     context

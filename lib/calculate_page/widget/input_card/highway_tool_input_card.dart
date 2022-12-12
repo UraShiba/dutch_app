@@ -17,7 +17,7 @@ class HighwayToolInputCard extends StatelessWidget {
     final _editingController = TextEditingController();
 
     return Card(
-      color: const Color((0xFFF6F9FC)),
+      color: cardColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

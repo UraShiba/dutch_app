@@ -15,7 +15,7 @@ class SaveButton extends StatelessWidget {
     return Center(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF6667AB),
+          backgroundColor: buttonColor,
         ),
         onPressed: () {
           DateTime dateTime = context.read<DatePickCubit>().getDateTime();
