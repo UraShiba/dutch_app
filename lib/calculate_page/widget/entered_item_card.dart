@@ -1,4 +1,4 @@
-import 'package:dutch_app/configration/color.dart';
+import 'package:dutch_app/configration/style.dart';
 import 'package:flutter/material.dart';
 
 class EnteredItemCard extends StatelessWidget {
