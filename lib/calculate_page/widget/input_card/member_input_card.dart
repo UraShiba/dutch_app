@@ -1,4 +1,5 @@
 import 'package:dutch_app/bloc/member/member_cubit.dart';
+import 'package:dutch_app/configration/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,12 +22,12 @@ class MemberInputCard extends StatelessWidget {
             const Text(
               "Member",
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 20),
+              style: textStyle1,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Name of member"),
+                const Text("Name of member", style: textStyle2),
                 SizedBox(
                   width: 100,
                   height: 50,
@@ -42,14 +43,17 @@ class MemberInputCard extends StatelessWidget {
             Center(
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
+                    backgroundColor: const Color(0xFF6667AB),
                   ),
                   onPressed: () {
                     context
                         .read<MemberCubit>()
                         .addMember(_editingController.value.text);
                   },
-                  child: const Text("Add member")),
+                  child: const Text(
+                    "Add member",
+                    style: buttonTextStyle,
+                  )),
             ),
             listView
           ],

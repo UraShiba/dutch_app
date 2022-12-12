@@ -1,5 +1,6 @@
 import 'package:dutch_app/bloc/member/member_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
+import 'package:dutch_app/configration/color.dart';
 import 'package:dutch_app/model/total_amount.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,20 +24,22 @@ class PricePerPersonCard extends StatelessWidget {
                       const Text(
                         "Price per person",
                         textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 20),
+                        style: textStyle1,
                       ),
                       const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text("Bill"),
+                          const Text("Bill", style: textStyle2),
                           BlocBuilder<MemberCubit, List<String>>(
                             builder: ((context, memberList) => memberList
                                     .isNotEmpty
                                 ? Text(
-                                    "${context.read<TotalAmountCubit>().getPricePersonAmount(memberList.length).toString()} yen")
+                                    "${context.read<TotalAmountCubit>().getPricePersonAmount(memberList.length).toString()} yen",
+                                    style: textStyle3)
                                 : Text(
-                                    "${context.read<TotalAmountCubit>().getPricePersonAmount(1).toString()} yen")),
+                                    "${context.read<TotalAmountCubit>().getPricePersonAmount(1).toString()} yen",
+                                    style: textStyle3)),
                           )
                         ],
                       ),

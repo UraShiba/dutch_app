@@ -1,5 +1,6 @@
 import 'package:dutch_app/bloc/highway_tool/highway_tool_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
+import 'package:dutch_app/configration/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,12 +27,12 @@ class HighwayToolInputCard extends StatelessWidget {
             const Text(
               "Highway tool",
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 20),
+              style: textStyle1,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Fare"),
+                const Text("Fare", style: textStyle2),
                 SizedBox(
                   width: 50,
                   height: 50,

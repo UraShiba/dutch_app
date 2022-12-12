@@ -1,5 +1,6 @@
 import 'package:dutch_app/bloc/gas_fee/gas_fee_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
+import 'package:dutch_app/configration/color.dart';
 import 'package:dutch_app/model/transportation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,12 +28,12 @@ class GasInputCard extends StatelessWidget {
             const Text(
               "Gas fee",
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 20),
+              style: textStyle1,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Litter (km/l)"),
+                const Text("Litter (km/l)", style: textStyle2),
                 SizedBox(
                   width: 50,
                   height: 50,
@@ -46,7 +47,7 @@ class GasInputCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Fuel Consumption (yen/l)"),
+                const Text("Fuel Consumption (yen/l)", style: textStyle2),
                 SizedBox(
                   width: 50,
                   height: 50,
@@ -58,11 +59,11 @@ class GasInputCard extends StatelessWidget {
               ],
             ),
             const Padding(padding: EdgeInsets.all(4)),
-            const Text("Travel distance"),
+            const Text("Travel distance", style: textStyle2),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Start trip"),
+                const Text("Start trip", style: textStyle2),
                 SizedBox(
                   width: 50,
                   height: 50,
@@ -71,7 +72,7 @@ class GasInputCard extends StatelessWidget {
                     controller: _startConsumptionController,
                   ),
                 ),
-                const Text("End trip"),
+                const Text("End trip", style: textStyle2),
                 SizedBox(
                   width: 50,
                   height: 50,
@@ -86,7 +87,7 @@ class GasInputCard extends StatelessWidget {
             Center(
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
+                    backgroundColor: const Color(0xFF6667AB),
                   ),
                   onPressed: () {
                     final totalAmount =
@@ -106,7 +107,10 @@ class GasInputCard extends StatelessWidget {
                             sumGas: context.read<GasFeeCubit>().getGasFee()));
                     context.read<TotalAmountCubit>().calculateTotalAmount();
                   },
-                  child: const Text("Add gas fee")),
+                  child: const Text(
+                    "Add gas fee",
+                    style: buttonTextStyle,
+                  )),
             ),
             gasFee
           ],

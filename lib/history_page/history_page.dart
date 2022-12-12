@@ -1,4 +1,5 @@
 import 'package:dutch_app/bloc/history/history_cubit.dart';
+import 'package:dutch_app/configration/color.dart';
 import 'package:dutch_app/model/history.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,47 +18,16 @@ class HistoryPage extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             children: state
                 .map((e) => Card(
-                      color: Theme.of(context).primaryColor,
+                      color: cardColor,
                       child: Column(
                         children: [
-                          Text(
-                            format.format(e.dateTime).toString(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline6
-                                ?.copyWith(
-                                    color:
-                                        Theme.of(context).secondaryHeaderColor),
-                          ),
-                          Text(
-                            e.money.toString(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline6
-                                ?.copyWith(
-                                    color:
-                                        Theme.of(context).secondaryHeaderColor),
-                          ),
-                          Text(
-                            "Members",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline6
-                                ?.copyWith(
-                                    color:
-                                        Theme.of(context).secondaryHeaderColor),
-                          ),
+                          Text(format.format(e.dateTime).toString(),
+                              style: textStyle2),
+                          Text(e.money.toString(), style: textStyle3),
+                          const Text("Members", style: textStyle2),
                           Column(
                             children: e.memberName
-                                .map((e) => Text(
-                                      e,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2
-                                          ?.copyWith(
-                                              color: Theme.of(context)
-                                                  .secondaryHeaderColor),
-                                    ))
+                                .map((e) => Text(e, style: textStyle3))
                                 .toList(),
                           )
                         ],
