@@ -1,3 +1,4 @@
+import 'package:dutch_app/bloc/button_enable/button_enable_cubit.dart';
 import 'package:dutch_app/bloc/member/member_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,26 +31,37 @@ class MemberInputCard extends StatelessWidget {
                 SizedBox(
                   width: 100,
                   height: 50,
-                  child: TextFormField(
+                  child: Form(
                     key: _formKey,
-                    controller: _editingController,
-                    onFieldSubmitted: (value) =>
-                        context.read<MemberCubit>().addMember((value)),
+                    child: TextFormField(
+                      controller: _editingController,
+                      onChanged: (value) => context
+                          .read<ButtonEnableCubit>()
+                          .updateMemberButton(true),
+                    ),
                   ),
                 ),
               ],
             ),
             Center(
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                  ),
-                  onPressed: () {
-                    context
-                        .read<MemberCubit>()
-                        .addMember(_editingController.value.text);
-                  },
-                  child: const Text("Add member")),
+              child: BlocBuilder<ButtonEnableCubit, IsButtonEnable>(
+                  builder: (context, state) {
+                bool _isEnable =
+                    context.read<ButtonEnableCubit>().isMemberButtonEnable();
+                return ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                    ),
+                    onPressed: _isEnable
+                        ? () {
+                            _formKey.currentState!.save();
+                            context
+                                .read<MemberCubit>()
+                                .addMember(_editingController.value.text);
+                          }
+                        : null,
+                    child: const Text("Add member"));
+              }),
             ),
             listView
           ],

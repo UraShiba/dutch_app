@@ -1,3 +1,4 @@
+import 'package:dutch_app/bloc/button_enable/button_enable_cubit.dart';
 import 'package:dutch_app/bloc/gas_fee/gas_fee_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
 import 'package:dutch_app/model/transportation.dart';
@@ -43,13 +44,15 @@ class GasInputCard extends StatelessWidget {
                     width: 50,
                     height: 50,
                     child: TextFormField(
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      onSaved: (value) {
-                        if (value!.isNotEmpty) {
-                          inputData.litter = int.parse(value);
-                        }
-                      },
-                    ),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        onSaved: (value) {
+                          inputData.litter = int.parse(value!);
+                        },
+                        onChanged: (value) => context
+                            .read<ButtonEnableCubit>()
+                            .updateLitter(true)),
                   ),
                 ],
               ),
@@ -61,13 +64,15 @@ class GasInputCard extends StatelessWidget {
                     width: 50,
                     height: 50,
                     child: TextFormField(
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      onSaved: (value) {
-                        if (value!.isNotEmpty) {
-                          inputData.fuelConsumption = int.parse(value);
-                        }
-                      },
-                    ),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        onSaved: (value) {
+                          inputData.fuelConsumption = int.parse(value!);
+                        },
+                        onChanged: (value) => context
+                            .read<ButtonEnableCubit>()
+                            .updateFuelConsumption(true)),
                   ),
                 ],
               ),
@@ -81,13 +86,15 @@ class GasInputCard extends StatelessWidget {
                     width: 50,
                     height: 50,
                     child: TextFormField(
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      onSaved: (value) {
-                        if (value!.isNotEmpty) {
-                          inputData.startTrip = int.parse(value);
-                        }
-                      },
-                    ),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        onSaved: (value) {
+                          inputData.startTrip = int.parse(value!);
+                        },
+                        onChanged: (value) => context
+                            .read<ButtonEnableCubit>()
+                            .updateStartTrip(true)),
                   ),
                   const Text("End trip"),
                   SizedBox(
@@ -96,38 +103,52 @@ class GasInputCard extends StatelessWidget {
                     child: TextFormField(
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       onSaved: (value) {
-                        if (value!.isNotEmpty) {
-                          inputData.endTrip = int.parse(value);
-                        }
+                        inputData.endTrip = int.parse(value!);
                       },
+                      onChanged: (value) =>
+                          context.read<ButtonEnableCubit>().updateEndTrip(true),
                     ),
                   ),
                 ],
               ),
               const Padding(padding: EdgeInsets.all(8)),
               Center(
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                    ),
-                    onPressed: () {
-                      _gasFee.currentState!.save();
-                      context.read<GasFeeCubit>().addGasFeeCalculatorData(
-                          GasFeeCalculatorData(
-                              fuelConsumption: inputData.fuelConsumption!,
-                              startTrip: inputData.startTrip!,
-                              endTrip: inputData.endTrip!,
-                              litter: inputData.litter!));
-                      final totalAmount =
-                          context.read<TotalAmountCubit>().getTotalAmount();
+                child: BlocBuilder<ButtonEnableCubit, IsButtonEnable>(
+                    builder: (context, state) {
+                  bool _isEnable =
+                      context.read<ButtonEnableCubit>().isGasFeeButtonEnable();
+                  return ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                      ),
+                      onPressed: _isEnable
+                          ? () {
+                              _gasFee.currentState!.save();
+                              context
+                                  .read<GasFeeCubit>()
+                                  .addGasFeeCalculatorData(GasFeeCalculatorData(
+                                      fuelConsumption:
+                                          inputData.fuelConsumption!,
+                                      startTrip: inputData.startTrip!,
+                                      endTrip: inputData.endTrip!,
+                                      litter: inputData.litter!));
+                              final totalAmount = context
+                                  .read<TotalAmountCubit>()
+                                  .getTotalAmount();
 
-                      context.read<GasFeeCubit>().calculateGasFee();
-                      context.read<TotalAmountCubit>().addFeeList(
-                          totalAmount.copyWith(
-                              sumGas: context.read<GasFeeCubit>().getGasFee()));
-                      context.read<TotalAmountCubit>().calculateTotalAmount();
-                    },
-                    child: const Text("Add gas fee")),
+                              context.read<GasFeeCubit>().calculateGasFee();
+                              context.read<TotalAmountCubit>().addFeeList(
+                                  totalAmount.copyWith(
+                                      sumGas: context
+                                          .read<GasFeeCubit>()
+                                          .getGasFee()));
+                              context
+                                  .read<TotalAmountCubit>()
+                                  .calculateTotalAmount();
+                            }
+                          : null,
+                      child: const Text("Add gas fee"));
+                }),
               ),
               gasFee
             ],

@@ -1,3 +1,4 @@
+import 'package:dutch_app/bloc/button_enable/button_enable_cubit.dart';
 import 'package:dutch_app/bloc/date_pick/date_pick_cubit.dart';
 import 'package:dutch_app/bloc/gas_fee/gas_fee_cubit.dart';
 import 'package:dutch_app/bloc/highway_tool/highway_tool_cubit.dart';
@@ -44,7 +45,8 @@ class CalculatePage extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => ParkingFeeCubit(),
-        )
+        ),
+        BlocProvider(create: (_) => ButtonEnableCubit())
       ],
       child: SingleChildScrollView(
         child: Column(
