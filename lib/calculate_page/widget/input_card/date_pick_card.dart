@@ -12,43 +12,52 @@ class DatePickCard extends StatelessWidget {
       color: cardColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BlocBuilder<DatePickCubit, DateTime>(builder: (context, date) {
-              return Text(
-                '${date.year}/${date.month}/${date.day}',
-                style: const TextStyle(fontSize: 20),
-              );
-            }),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: buttonColor,
-              ),
-              onPressed: () async {
-                DateTime? newDate = await showDatePicker(
-                    context: context,
-                    initialDate: context.read<DatePickCubit>().getDateTime(),
-                    firstDate: DateTime(2020),
-                    lastDate: DateTime(2100),
-                    builder: (context, child) {
-                      return Theme(
-                        data: ThemeData.light().copyWith(
-                          colorScheme: const ColorScheme.light().copyWith(
-                            primary: orangeColor,
-                          ),
-                        ),
-                        child: child!,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Date', style: textStyle1),
+                Row(
+                  children: [
+                    BlocBuilder<DatePickCubit, DateTime>(
+                        builder: (context, date) {
+                      return Text(
+                        '${date.year}/${date.month}/${date.day}',
+                        style: textStyle2,
                       );
-                    });
-                if (newDate != null) {
-                  context.read<DatePickCubit>().setDateTime(newDate);
-                }
-              },
-              child: const Text(
-                'Select date',
-                style: buttonTextStyle,
-              ),
+                    }),
+                    const SizedBox(width: 8),
+                    InkWell(
+                      onTap: () async {
+                        DateTime? newDate = await showDatePicker(
+                            context: context,
+                            initialDate:
+                                context.read<DatePickCubit>().getDateTime(),
+                            firstDate: DateTime(2020),
+                            lastDate: DateTime(2100),
+                            builder: (context, child) {
+                              return Theme(
+                                data: ThemeData.light().copyWith(
+                                    colorScheme: const ColorScheme.light()
+                                        .copyWith(primary: orangeColor)),
+                                child: child!,
+                              );
+                            });
+                        if (newDate != null) {
+                          context.read<DatePickCubit>().setDateTime(newDate);
+                        }
+                      },
+                      child: const Icon(
+                        Icons.calendar_month_rounded,
+                        color: buttonColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
