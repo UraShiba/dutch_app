@@ -58,6 +58,9 @@ class MemberInputCard extends StatelessWidget {
                             context
                                 .read<MemberCubit>()
                                 .addMember(_editingController.value.text);
+                            context
+                                .read<ButtonEnableCubit>()
+                                .updateSaveButton(true);
                           }
                         : null,
                     child: const Text("Add member"));
