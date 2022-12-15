@@ -1,7 +1,6 @@
 import 'package:dutch_app/bloc/date_pick/date_pick_cubit.dart';
 import 'package:dutch_app/bloc/gas_fee/gas_fee_cubit.dart';
 import 'package:dutch_app/bloc/highway_tool/highway_tool_cubit.dart';
-import 'package:dutch_app/bloc/history/history_cubit.dart';
 import 'package:dutch_app/bloc/member/member_cubit.dart';
 import 'package:dutch_app/bloc/parking_fee/parking_fee_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
