@@ -1,5 +1,6 @@
 import 'package:dutch_app/bloc/member/member_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
+import 'package:dutch_app/configration/style.dart';
 import 'package:dutch_app/model/total_amount.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +16,7 @@ class PricePerPersonCard extends StatelessWidget {
               child: SizedBox(
                 height: 80,
                 child: Card(
-                  color: const Color((0xFFF6F9FC)),
+                  color: cardColor,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,20 +24,22 @@ class PricePerPersonCard extends StatelessWidget {
                       const Text(
                         "Price per person",
                         textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 20),
+                        style: titleLarge,
                       ),
                       const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text("Bill"),
+                          const Text("Bill", style: bodyLarge),
                           BlocBuilder<MemberCubit, List<String>>(
                             builder: ((context, memberList) => memberList
                                     .isNotEmpty
                                 ? Text(
-                                    "${context.read<TotalAmountCubit>().getPricePersonAmount(memberList.length).toString()} yen")
+                                    "${context.read<TotalAmountCubit>().getPricePersonAmount(memberList.length).toString()} yen",
+                                    style: bodyMedium)
                                 : Text(
-                                    "${context.read<TotalAmountCubit>().getPricePersonAmount(1).toString()} yen")),
+                                    "${context.read<TotalAmountCubit>().getPricePersonAmount(1).toString()} yen",
+                                    style: bodyMedium)),
                           )
                         ],
                       ),

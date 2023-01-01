@@ -1,4 +1,5 @@
 import 'package:dutch_app/bloc/date_pick/date_pick_cubit.dart';
+import 'package:dutch_app/configration/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +9,7 @@ class DatePickCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color((0xFFF6F9FC)),
+      color: cardColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -22,19 +23,32 @@ class DatePickCard extends StatelessWidget {
             }),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
+                backgroundColor: buttonColor,
               ),
               onPressed: () async {
                 DateTime? newDate = await showDatePicker(
                     context: context,
                     initialDate: context.read<DatePickCubit>().getDateTime(),
                     firstDate: DateTime(2020),
-                    lastDate: DateTime(2100));
+                    lastDate: DateTime(2100),
+                    builder: (context, child) {
+                      return Theme(
+                        data: ThemeData.light().copyWith(
+                          colorScheme: const ColorScheme.light().copyWith(
+                            primary: orangeColor,
+                          ),
+                        ),
+                        child: child!,
+                      );
+                    });
                 if (newDate != null) {
                   context.read<DatePickCubit>().setDateTime(newDate);
                 }
               },
-              child: const Text('Select date'),
+              child: const Text(
+                'Select date',
+                style: bodyMedium,
+              ),
             ),
           ],
         ),

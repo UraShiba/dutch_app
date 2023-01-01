@@ -1,3 +1,4 @@
+import 'package:dutch_app/configration/style.dart';
 import 'package:dutch_app/history_page/history_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dutch_app/bloc/history/history_cubit.dart';
@@ -14,25 +15,17 @@ class AndroidApp extends StatelessWidget {
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
-            backgroundColor: const Color(0xFFFEFEFF),
+            backgroundColor: whiteColor,
             appBar: AppBar(
               bottom: const TabBar(tabs: [
-                Tab(
-                    icon: Icon(
-                  Icons.calculate,
-                  color: Colors.blue,
-                )),
-                Tab(
-                    icon: Icon(
-                  Icons.history,
-                  color: Colors.blue,
-                )),
+                Tab(icon: Icon(Icons.calculate, color: whiteColor)),
+                Tab(icon: Icon(Icons.history, color: whiteColor)),
               ]),
               title: const Text(
                 "Dutch app",
-                style: TextStyle(color: Color(0xFF627893)),
+                style: TextStyle(color: whiteColor),
               ),
-              backgroundColor: const Color((0xFFF6F9FC)),
+              backgroundColor: orangeColor,
             ),
             body: BlocProvider(
               create: (context) => HistoryCubit(),
