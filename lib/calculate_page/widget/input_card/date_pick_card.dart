@@ -47,7 +47,7 @@ class DatePickCard extends StatelessWidget {
               },
               child: const Text(
                 'Select date',
-                style: buttonTextStyle,
+                style: bodyMedium,
               ),
             ),
           ],

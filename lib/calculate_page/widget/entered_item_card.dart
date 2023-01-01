@@ -20,9 +20,9 @@ class EnteredItemCard extends StatelessWidget {
             if (number != null)
               Text(
                 "${(number! + 1).toString()}. ",
-                style: textStyle3,
+                style: bodyMedium,
               ),
-            Text(value, style: textStyle3),
+            Text(value, style: bodyMedium),
           ],
         ),
       ),

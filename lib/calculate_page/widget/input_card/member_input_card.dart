@@ -22,12 +22,12 @@ class MemberInputCard extends StatelessWidget {
             const Text(
               "Member",
               textAlign: TextAlign.left,
-              style: textStyle1,
+              style: titleLarge,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Name of member", style: textStyle2),
+                const Text("Name of member", style: bodyLarge),
                 SizedBox(
                   width: 100,
                   height: 50,
@@ -52,7 +52,7 @@ class MemberInputCard extends StatelessWidget {
                   },
                   child: const Text(
                     "Add member",
-                    style: buttonTextStyle,
+                    style: bodyMedium,
                   )),
             ),
             listView
