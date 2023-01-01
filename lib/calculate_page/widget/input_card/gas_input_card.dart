@@ -1,6 +1,7 @@
 import 'package:dutch_app/bloc/button_enable/button_enable_cubit.dart';
 import 'package:dutch_app/bloc/gas_fee/gas_fee_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
+import 'package:dutch_app/configuration/style.dart';
 import 'package:dutch_app/model/transportation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,8 +23,9 @@ class GasInputCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final _gasFee = GlobalKey<FormState>();
     var inputData = _GasFeeCalculatorData();
+
     return Card(
-      color: const Color((0xFFF6F9FC)),
+      color: cardColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Form(
@@ -34,12 +36,12 @@ class GasInputCard extends StatelessWidget {
               const Text(
                 "Gas fee",
                 textAlign: TextAlign.left,
-                style: TextStyle(fontSize: 20),
+                style: titleLarge,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Litter (km/l)"),
+                  const Text("Litter (km/l)", style: bodyLarge),
                   SizedBox(
                     width: 50,
                     height: 50,
@@ -59,7 +61,7 @@ class GasInputCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Fuel Consumption (yen/l)"),
+                  const Text("Fuel Consumption (yen/l)", style: bodyLarge),
                   SizedBox(
                     width: 50,
                     height: 50,
@@ -77,11 +79,11 @@ class GasInputCard extends StatelessWidget {
                 ],
               ),
               const Padding(padding: EdgeInsets.all(4)),
-              const Text("Travel distance"),
+              const Text("Travel distance", style: bodyLarge),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Start trip"),
+                  const Text("Start trip", style: bodyLarge),
                   SizedBox(
                     width: 50,
                     height: 50,
@@ -96,7 +98,7 @@ class GasInputCard extends StatelessWidget {
                             .read<ButtonEnableCubit>()
                             .updateStartTrip(true)),
                   ),
-                  const Text("End trip"),
+                  const Text("End trip", style: bodyLarge),
                   SizedBox(
                     width: 50,
                     height: 50,

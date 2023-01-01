@@ -1,5 +1,6 @@
 import 'package:dutch_app/bloc/highway_tool/highway_tool_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
+import 'package:dutch_app/configuration/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +17,7 @@ class HighwayToolInputCard extends StatelessWidget {
     final _editingController = TextEditingController();
 
     return Card(
-      color: const Color((0xFFF6F9FC)),
+      color: cardColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -26,12 +27,12 @@ class HighwayToolInputCard extends StatelessWidget {
             const Text(
               "Highway tool",
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 20),
+              style: titleLarge,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Fare"),
+                const Text("Fare", style: bodyLarge),
                 SizedBox(
                   width: 50,
                   height: 50,
