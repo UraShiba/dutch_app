@@ -41,18 +41,7 @@ class HighwayToolInputCard extends StatelessWidget {
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       controller: _editingController,
                       onFieldSubmitted: (value) {
-                        final totalAmount =
-                            context.read<TotalAmountCubit>().getTotalAmount();
-
-                        context
-                            .read<HighwayToolCubit>()
-                            .addHighwayTool((int.parse(value)));
-                        context.read<TotalAmountCubit>().addFeeList(
-                            totalAmount.copyWith(
-                                sumHighwayTool: context
-                                    .read<HighwayToolCubit>()
-                                    .getHighwayTool()));
-                        context.read<TotalAmountCubit>().calculateTotalAmount();
+                        submitAction(context, value);
                       }),
                 ),
               ],
@@ -63,4 +52,13 @@ class HighwayToolInputCard extends StatelessWidget {
       ),
     );
   }
+}
+
+void submitAction(BuildContext context, String value) {
+  final totalAmount = context.read<TotalAmountCubit>().getTotalAmount();
+
+  context.read<HighwayToolCubit>().addHighwayTool((int.parse(value)));
+  context.read<TotalAmountCubit>().addFeeList(totalAmount.copyWith(
+      sumHighwayTool: context.read<HighwayToolCubit>().getHighwayTool()));
+  context.read<TotalAmountCubit>().calculateTotalAmount();
 }

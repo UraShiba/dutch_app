@@ -1,3 +1,4 @@
+import 'package:dutch_app/bloc/button_enable/button_enable_cubit.dart';
 import 'package:dutch_app/bloc/date_pick/date_pick_cubit.dart';
 import 'package:dutch_app/bloc/history/history_cubit.dart';
 import 'package:dutch_app/bloc/member/member_cubit.dart';
@@ -13,20 +14,28 @@ class SaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: buttonColor,
-        ),
-        onPressed: () {
-          DateTime dateTime = context.read<DatePickCubit>().getDateTime();
-          List<String> memberList = context.read<MemberCubit>().getMember();
-          int money = context.read<TotalAmountCubit>().getPricePersonAmount(
-              context.read<MemberCubit>().getPersonNumber());
-          context.read<HistoryCubit>().addHistory(History(
-              dateTime: dateTime, memberName: memberList, money: money));
-        },
-        child: const Text('Save', style: bodyMedium),
-      ),
+      child: BlocBuilder<ButtonEnableCubit, IsButtonEnable>(
+          builder: (context, state) {
+        bool _isEnable = context.read<ButtonEnableCubit>().isSaveButtonEnable();
+
+        return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: buttonColor,
+          ),
+          onPressed: _isEnable ? () => buttonAction(context) : null,
+          child: const Text('Save', style: bodyMedium),
+        );
+      }),
     );
   }
+}
+
+void buttonAction(BuildContext context) {
+  DateTime dateTime = context.read<DatePickCubit>().getDateTime();
+  List<String> memberList = context.read<MemberCubit>().getMember();
+  int money = context
+      .read<TotalAmountCubit>()
+      .getPricePersonAmount(context.read<MemberCubit>().getPersonNumber());
+  context.read<HistoryCubit>().addHistory(
+      History(dateTime: dateTime, memberName: memberList, money: money));
 }
