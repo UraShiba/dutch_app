@@ -32,20 +32,7 @@ class DatePickCard extends StatelessWidget {
                     const SizedBox(width: 8),
                     InkWell(
                       onTap: () async {
-                        DateTime? newDate = await showDatePicker(
-                            context: context,
-                            initialDate:
-                                context.read<DatePickCubit>().getDateTime(),
-                            firstDate: DateTime(2020),
-                            lastDate: DateTime(2100),
-                            builder: (context, child) {
-                              return Theme(
-                                data: ThemeData.light().copyWith(
-                                    colorScheme: const ColorScheme.light()
-                                        .copyWith(primary: orangeColor)),
-                                child: child!,
-                              );
-                            });
+                        DateTime? newDate = await getDateTime(context);
                         if (newDate != null) {
                           context.read<DatePickCubit>().setDateTime(newDate);
                         }
@@ -64,4 +51,21 @@ class DatePickCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<DateTime?> getDateTime(BuildContext context) async {
+  var newDate = await showDatePicker(
+      context: context,
+      initialDate: context.read<DatePickCubit>().getDateTime(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2100),
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+              colorScheme:
+                  const ColorScheme.light().copyWith(primary: orangeColor)),
+          child: child!,
+        );
+      });
+  return newDate;
 }
