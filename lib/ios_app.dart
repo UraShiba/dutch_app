@@ -1,4 +1,4 @@
-import 'package:dutch_app/configration/style.dart';
+import 'package:dutch_app/configuration/style.dart';
 import 'package:dutch_app/history_page/history_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dutch_app/bloc/history/history_cubit.dart';
