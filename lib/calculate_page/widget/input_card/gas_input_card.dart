@@ -122,30 +122,7 @@ class GasInputCard extends StatelessWidget {
                         backgroundColor: Colors.black,
                       ),
                       onPressed: _isEnable
-                          ? () {
-                              _gasFee.currentState!.save();
-                              context
-                                  .read<GasFeeCubit>()
-                                  .addGasFeeCalculatorData(GasFeeCalculatorData(
-                                      fuelConsumption:
-                                          inputData.fuelConsumption!,
-                                      startTrip: inputData.startTrip!,
-                                      endTrip: inputData.endTrip!,
-                                      litter: inputData.litter!));
-                              final totalAmount = context
-                                  .read<TotalAmountCubit>()
-                                  .getTotalAmount();
-
-                              context.read<GasFeeCubit>().calculateGasFee();
-                              context.read<TotalAmountCubit>().addFeeList(
-                                  totalAmount.copyWith(
-                                      sumGas: context
-                                          .read<GasFeeCubit>()
-                                          .getGasFee()));
-                              context
-                                  .read<TotalAmountCubit>()
-                                  .calculateTotalAmount();
-                            }
+                          ? () => buttonAction(context, _gasFee, inputData)
                           : null,
                       child: const Text("Add gas fee"));
                 }),
@@ -157,4 +134,23 @@ class GasInputCard extends StatelessWidget {
       ),
     );
   }
+}
+
+void buttonAction(BuildContext context, GlobalKey<FormState> globalKey,
+    _GasFeeCalculatorData inputData) {
+  globalKey.currentState!.save();
+
+  context.read<GasFeeCubit>().addGasFeeCalculatorData(GasFeeCalculatorData(
+      fuelConsumption: inputData.fuelConsumption!,
+      startTrip: inputData.startTrip!,
+      endTrip: inputData.endTrip!,
+      litter: inputData.litter!));
+  context.read<GasFeeCubit>().calculateGasFee();
+
+  final totalAmount = context.read<TotalAmountCubit>().getTotalAmount();
+  final sumGasFee = context.read<GasFeeCubit>().getGasFee();
+  context
+      .read<TotalAmountCubit>()
+      .addFeeList(totalAmount.copyWith(sumGas: sumGasFee));
+  context.read<TotalAmountCubit>().calculateTotalAmount();
 }

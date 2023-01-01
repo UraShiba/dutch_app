@@ -21,25 +21,20 @@ class SaveButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.black,
           ),
-          onPressed: _isEnable
-              ? () {
-                  DateTime dateTime =
-                      context.read<DatePickCubit>().getDateTime();
-                  List<String> memberList =
-                      context.read<MemberCubit>().getMember();
-                  int money = context
-                      .read<TotalAmountCubit>()
-                      .getPricePersonAmount(
-                          context.read<MemberCubit>().getPersonNumber());
-                  context.read<HistoryCubit>().addHistory(History(
-                      dateTime: dateTime,
-                      memberName: memberList,
-                      money: money));
-                }
-              : null,
+          onPressed: _isEnable ? () => buttonAction(context) : null,
           child: const Text('Save'),
         );
       }),
     );
   }
+}
+
+void buttonAction(BuildContext context) {
+  DateTime dateTime = context.read<DatePickCubit>().getDateTime();
+  List<String> memberList = context.read<MemberCubit>().getMember();
+  int money = context
+      .read<TotalAmountCubit>()
+      .getPricePersonAmount(context.read<MemberCubit>().getPersonNumber());
+  context.read<HistoryCubit>().addHistory(
+      History(dateTime: dateTime, memberName: memberList, money: money));
 }

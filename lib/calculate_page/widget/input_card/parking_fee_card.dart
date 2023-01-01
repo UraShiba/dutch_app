@@ -39,18 +39,7 @@ class ParkingFeeCard extends StatelessWidget {
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       controller: _editingController,
                       onFieldSubmitted: (value) {
-                        final totalAmount =
-                            context.read<TotalAmountCubit>().getTotalAmount();
-
-                        context
-                            .read<ParkingFeeCubit>()
-                            .addParkingFee((int.parse(value)));
-                        context.read<TotalAmountCubit>().addFeeList(
-                            totalAmount.copyWith(
-                                sumParkingFee: context
-                                    .read<ParkingFeeCubit>()
-                                    .getParkingFee()));
-                        context.read<TotalAmountCubit>().calculateTotalAmount();
+                        submitAction(context, value);
                       }),
                 ),
               ],
@@ -61,4 +50,13 @@ class ParkingFeeCard extends StatelessWidget {
       ),
     );
   }
+}
+
+void submitAction(BuildContext context, String value) {
+  final totalAmount = context.read<TotalAmountCubit>().getTotalAmount();
+
+  context.read<ParkingFeeCubit>().addParkingFee((int.parse(value)));
+  context.read<TotalAmountCubit>().addFeeList(totalAmount.copyWith(
+      sumParkingFee: context.read<ParkingFeeCubit>().getParkingFee()));
+  context.read<TotalAmountCubit>().calculateTotalAmount();
 }

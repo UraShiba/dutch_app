@@ -53,15 +53,8 @@ class MemberInputCard extends StatelessWidget {
                       backgroundColor: Colors.black,
                     ),
                     onPressed: _isEnable
-                        ? () {
-                            _formKey.currentState!.save();
-                            context
-                                .read<MemberCubit>()
-                                .addMember(_editingController.value.text);
-                            context
-                                .read<ButtonEnableCubit>()
-                                .updateSaveButton(true);
-                          }
+                        ? () =>
+                            buttonAction(context, _formKey, _editingController)
                         : null,
                     child: const Text("Add member"));
               }),
@@ -72,4 +65,11 @@ class MemberInputCard extends StatelessWidget {
       ),
     );
   }
+}
+
+void buttonAction(BuildContext context, GlobalKey<FormState> globalKey,
+    TextEditingController controller) {
+  globalKey.currentState!.save();
+  context.read<MemberCubit>().addMember(controller.value.text);
+  context.read<ButtonEnableCubit>().updateSaveButton(true);
 }
