@@ -1,6 +1,6 @@
 import 'package:dutch_app/bloc/highway_tool/highway_tool_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
-import 'package:dutch_app/configration/style.dart';
+import 'package:dutch_app/configuration/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

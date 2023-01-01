@@ -1,5 +1,5 @@
 import 'package:dutch_app/bloc/date_pick/date_pick_cubit.dart';
-import 'package:dutch_app/configration/style.dart';
+import 'package:dutch_app/configuration/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,36 +13,30 @@ class DatePickCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text('Date', style: textStyle1),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Text('Date', style: textStyle1),
-                Row(
-                  children: [
-                    BlocBuilder<DatePickCubit, DateTime>(
-                        builder: (context, date) {
-                      return Text(
-                        '${date.year}/${date.month}/${date.day}',
-                        style: textStyle2,
-                      );
-                    }),
-                    const SizedBox(width: 8),
-                    InkWell(
-                      onTap: () async {
-                        DateTime? newDate = await getDateTime(context);
-                        if (newDate != null) {
-                          context.read<DatePickCubit>().setDateTime(newDate);
-                        }
-                      },
-                      child: const Icon(
-                        Icons.calendar_month_rounded,
-                        color: buttonColor,
-                      ),
-                    ),
-                  ],
+                BlocBuilder<DatePickCubit, DateTime>(builder: (context, date) {
+                  return Text(
+                    '${date.year}/${date.month}/${date.day}',
+                    style: textStyle2,
+                  );
+                }),
+                const SizedBox(width: 8),
+                InkWell(
+                  onTap: () async {
+                    DateTime? newDate = await getDateTime(context);
+                    if (newDate != null) {
+                      context.read<DatePickCubit>().setDateTime(newDate);
+                    }
+                  },
+                  child: const Icon(
+                    Icons.calendar_month_rounded,
+                    color: buttonColor,
+                  ),
                 ),
               ],
             ),
