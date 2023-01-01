@@ -22,12 +22,12 @@ class HistoryPage extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(format.format(e.dateTime).toString(),
-                              style: textStyle2),
-                          Text(e.money.toString(), style: textStyle3),
-                          const Text("Members", style: textStyle2),
+                              style: bodyLarge),
+                          Text(e.money.toString(), style: bodyMedium),
+                          const Text("Members", style: bodyLarge),
                           Column(
                             children: e.memberName
-                                .map((e) => Text(e, style: textStyle3))
+                                .map((e) => Text(e, style: bodyMedium))
                                 .toList(),
                           )
                         ],

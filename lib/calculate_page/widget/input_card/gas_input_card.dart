@@ -28,12 +28,12 @@ class GasInputCard extends StatelessWidget {
             const Text(
               "Gas fee",
               textAlign: TextAlign.left,
-              style: textStyle1,
+              style: titleLarge,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Litter (km/l)", style: textStyle2),
+                const Text("Litter (km/l)", style: bodyLarge),
                 SizedBox(
                   width: 50,
                   height: 50,
@@ -47,7 +47,7 @@ class GasInputCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Fuel Consumption (yen/l)", style: textStyle2),
+                const Text("Fuel Consumption (yen/l)", style: bodyLarge),
                 SizedBox(
                   width: 50,
                   height: 50,
@@ -59,11 +59,11 @@ class GasInputCard extends StatelessWidget {
               ],
             ),
             const Padding(padding: EdgeInsets.all(4)),
-            const Text("Travel distance", style: textStyle2),
+            const Text("Travel distance", style: bodyLarge),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Start trip", style: textStyle2),
+                const Text("Start trip", style: bodyLarge),
                 SizedBox(
                   width: 50,
                   height: 50,
@@ -72,7 +72,7 @@ class GasInputCard extends StatelessWidget {
                     controller: _startConsumptionController,
                   ),
                 ),
-                const Text("End trip", style: textStyle2),
+                const Text("End trip", style: bodyLarge),
                 SizedBox(
                   width: 50,
                   height: 50,
@@ -109,7 +109,7 @@ class GasInputCard extends StatelessWidget {
                   },
                   child: const Text(
                     "Add gas fee",
-                    style: buttonTextStyle,
+                    style: bodyMedium,
                   )),
             ),
             gasFee

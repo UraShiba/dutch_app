@@ -27,12 +27,12 @@ class HighwayToolInputCard extends StatelessWidget {
             const Text(
               "Highway tool",
               textAlign: TextAlign.left,
-              style: textStyle1,
+              style: titleLarge,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Fare", style: textStyle2),
+                const Text("Fare", style: bodyLarge),
                 SizedBox(
                   width: 50,
                   height: 50,

@@ -24,22 +24,22 @@ class PricePerPersonCard extends StatelessWidget {
                       const Text(
                         "Price per person",
                         textAlign: TextAlign.left,
-                        style: textStyle1,
+                        style: titleLarge,
                       ),
                       const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text("Bill", style: textStyle2),
+                          const Text("Bill", style: bodyLarge),
                           BlocBuilder<MemberCubit, List<String>>(
                             builder: ((context, memberList) => memberList
                                     .isNotEmpty
                                 ? Text(
                                     "${context.read<TotalAmountCubit>().getPricePersonAmount(memberList.length).toString()} yen",
-                                    style: textStyle3)
+                                    style: bodyMedium)
                                 : Text(
                                     "${context.read<TotalAmountCubit>().getPricePersonAmount(1).toString()} yen",
-                                    style: textStyle3)),
+                                    style: bodyMedium)),
                           )
                         ],
                       ),

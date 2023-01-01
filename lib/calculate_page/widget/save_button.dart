@@ -25,7 +25,7 @@ class SaveButton extends StatelessWidget {
           context.read<HistoryCubit>().addHistory(History(
               dateTime: dateTime, memberName: memberList, money: money));
         },
-        child: const Text('Save', style: buttonTextStyle),
+        child: const Text('Save', style: bodyMedium),
       ),
     );
   }

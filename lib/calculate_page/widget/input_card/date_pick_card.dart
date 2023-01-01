@@ -15,14 +15,14 @@ class DatePickCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Date', style: textStyle1),
+            const Text('Date', style: titleLarge),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 BlocBuilder<DatePickCubit, DateTime>(builder: (context, date) {
                   return Text(
                     '${date.year}/${date.month}/${date.day}',
-                    style: textStyle2,
+                    style: bodyLarge,
                   );
                 }),
                 const SizedBox(width: 8),
