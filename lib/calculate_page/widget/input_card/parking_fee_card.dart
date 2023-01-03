@@ -1,5 +1,6 @@
 import 'package:dutch_app/bloc/parking_fee/parking_fee_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
+import 'package:dutch_app/configuration/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +16,7 @@ class ParkingFeeCard extends StatelessWidget {
     final _editingController = TextEditingController();
 
     return Card(
-      color: const Color((0xFFF6F9FC)),
+      color: cardColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -25,12 +26,12 @@ class ParkingFeeCard extends StatelessWidget {
             const Text(
               "Parking tool",
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 20),
+              style: titleLarge,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Fare"),
+                const Text("Fare", style: bodyLarge),
                 SizedBox(
                   width: 50,
                   height: 50,
@@ -39,18 +40,7 @@ class ParkingFeeCard extends StatelessWidget {
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       controller: _editingController,
                       onFieldSubmitted: (value) {
-                        final totalAmount =
-                            context.read<TotalAmountCubit>().getTotalAmount();
-
-                        context
-                            .read<ParkingFeeCubit>()
-                            .addParkingFee((int.parse(value)));
-                        context.read<TotalAmountCubit>().addFeeList(
-                            totalAmount.copyWith(
-                                sumParkingFee: context
-                                    .read<ParkingFeeCubit>()
-                                    .getParkingFee()));
-                        context.read<TotalAmountCubit>().calculateTotalAmount();
+                        submitAction(context, value);
                       }),
                 ),
               ],
@@ -61,4 +51,13 @@ class ParkingFeeCard extends StatelessWidget {
       ),
     );
   }
+}
+
+void submitAction(BuildContext context, String value) {
+  final totalAmount = context.read<TotalAmountCubit>().getTotalAmount();
+
+  context.read<ParkingFeeCubit>().addParkingFee((int.parse(value)));
+  context.read<TotalAmountCubit>().addFeeList(totalAmount.copyWith(
+      sumParkingFee: context.read<ParkingFeeCubit>().getParkingFee()));
+  context.read<TotalAmountCubit>().calculateTotalAmount();
 }
