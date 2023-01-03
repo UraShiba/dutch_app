@@ -28,7 +28,7 @@ class AndroidApp extends StatelessWidget {
               backgroundColor: orangeColor,
             ),
             body: BlocProvider(
-              create: (context) => HistoryCubit(),
+              create: (context) => HistoryCubit()..initHistory(),
               child: const TabBarView(
                 children: [
                   CalculatePage(),

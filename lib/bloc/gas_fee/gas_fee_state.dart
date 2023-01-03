@@ -1,4 +1,4 @@
-import 'package:dutch_app/model/transportation.dart';
+import 'package:dutch_app/entities/transportation.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class GasFeeState extends Equatable {

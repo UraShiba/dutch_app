@@ -28,7 +28,7 @@ class IosApp extends StatelessWidget {
               Tab(icon: Icon(Icons.history, color: whiteColor)),
             ]),
             body: BlocProvider(
-              create: (context) => HistoryCubit(),
+              create: (context) => HistoryCubit()..initHistory(),
               child: const TabBarView(
                 children: [
                   CalculatePage(),

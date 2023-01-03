@@ -2,7 +2,7 @@ import 'package:dutch_app/bloc/button_enable/button_enable_cubit.dart';
 import 'package:dutch_app/bloc/gas_fee/gas_fee_cubit.dart';
 import 'package:dutch_app/bloc/total_amount/total_amount_cubit.dart';
 import 'package:dutch_app/configuration/style.dart';
-import 'package:dutch_app/model/transportation.dart';
+import 'package:dutch_app/entities/transportation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
