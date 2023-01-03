@@ -1,5 +1,5 @@
 import 'package:dutch_app/bloc/gas_fee/gas_fee_state.dart';
-import 'package:dutch_app/model/transportation.dart';
+import 'package:dutch_app/entities/transportation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GasFeeCubit extends Cubit<GasFeeCalculatorState> {

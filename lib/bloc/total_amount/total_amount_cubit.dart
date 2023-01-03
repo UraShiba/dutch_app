@@ -1,4 +1,4 @@
-import 'package:dutch_app/model/total_amount.dart';
+import 'package:dutch_app/entities/total_amount.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // class TotalAmountCubit extends Cubit<List<int>> {

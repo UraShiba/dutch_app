@@ -1,5 +1,5 @@
 import 'package:dutch_app/bloc/history/history_cubit.dart';
-import 'package:dutch_app/model/history.dart';
+import 'package:dutch_app/entities/history.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
