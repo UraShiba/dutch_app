@@ -37,6 +37,8 @@ class ParkingFeeCard extends StatelessWidget {
                   height: 50,
                   child: TextFormField(
                       key: _formKey,
+                      cursorColor: orangeColor,
+                      decoration: inputDecoration,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       controller: _editingController,
                       onFieldSubmitted: (value) {

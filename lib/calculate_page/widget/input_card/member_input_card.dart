@@ -35,6 +35,8 @@ class MemberInputCard extends StatelessWidget {
                   child: Form(
                     key: _formKey,
                     child: TextFormField(
+                      cursorColor: orangeColor,
+                      decoration: inputDecoration,
                       controller: _editingController,
                       onChanged: (value) => context
                           .read<ButtonEnableCubit>()

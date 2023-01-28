@@ -46,6 +46,8 @@ class GasInputCard extends StatelessWidget {
                     width: 50,
                     height: 50,
                     child: TextFormField(
+                        cursorColor: orangeColor,
+                        decoration: inputDecoration,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
                         ],
@@ -66,6 +68,8 @@ class GasInputCard extends StatelessWidget {
                     width: 50,
                     height: 50,
                     child: TextFormField(
+                        cursorColor: orangeColor,
+                        decoration: inputDecoration,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
                         ],
@@ -88,6 +92,8 @@ class GasInputCard extends StatelessWidget {
                     width: 50,
                     height: 50,
                     child: TextFormField(
+                        cursorColor: orangeColor,
+                        decoration: inputDecoration,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
                         ],
@@ -103,6 +109,8 @@ class GasInputCard extends StatelessWidget {
                     width: 50,
                     height: 50,
                     child: TextFormField(
+                      cursorColor: orangeColor,
+                      decoration: inputDecoration,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       onSaved: (value) {
                         inputData.endTrip = int.parse(value!);
