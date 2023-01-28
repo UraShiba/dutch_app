@@ -23,9 +23,10 @@ class IosApp extends StatelessWidget {
               ),
               backgroundColor: orangeColor,
             ),
-            bottomNavigationBar: const TabBar(tabs: [
-              Tab(icon: Icon(Icons.calculate, color: whiteColor)),
-              Tab(icon: Icon(Icons.history, color: whiteColor)),
+            bottomNavigationBar:
+                const TabBar(indicatorColor: orangeColor, tabs: [
+              Tab(icon: Icon(Icons.calculate, color: orangeColor)),
+              Tab(icon: Icon(Icons.history, color: orangeColor)),
             ]),
             body: BlocProvider(
               create: (context) => HistoryCubit()..initHistory(),

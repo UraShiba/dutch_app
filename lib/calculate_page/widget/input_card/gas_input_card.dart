@@ -121,7 +121,7 @@ class GasInputCard extends StatelessWidget {
                       context.read<ButtonEnableCubit>().isGasFeeButtonEnable();
                   return ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
+                        backgroundColor: buttonColor,
                       ),
                       onPressed: _isEnable
                           ? () => buttonAction(context, _gasFee, inputData)

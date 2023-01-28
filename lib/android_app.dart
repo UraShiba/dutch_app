@@ -17,9 +17,9 @@ class AndroidApp extends StatelessWidget {
         child: Scaffold(
             backgroundColor: whiteColor,
             appBar: AppBar(
-              bottom: const TabBar(tabs: [
-                Tab(icon: Icon(Icons.calculate, color: whiteColor)),
-                Tab(icon: Icon(Icons.history, color: whiteColor)),
+              bottom: const TabBar(indicatorColor: orangeColor, tabs: [
+                Tab(icon: Icon(Icons.calculate, color: orangeColor)),
+                Tab(icon: Icon(Icons.history, color: orangeColor)),
               ]),
               title: const Text(
                 "Dutch app",
