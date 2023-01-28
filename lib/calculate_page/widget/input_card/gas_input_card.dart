@@ -54,9 +54,13 @@ class GasInputCard extends StatelessWidget {
                         onSaved: (value) {
                           inputData.litter = int.parse(value!);
                         },
-                        onChanged: (value) => context
-                            .read<ButtonEnableCubit>()
-                            .updateLitter(true)),
+                        onChanged: (value) {
+                          if (value.contains(RegExp(r'[0-9]'))) {
+                            context
+                                .read<ButtonEnableCubit>()
+                                .updateLitter(true);
+                          }
+                        }),
                   ),
                 ],
               ),
@@ -76,9 +80,13 @@ class GasInputCard extends StatelessWidget {
                         onSaved: (value) {
                           inputData.fuelConsumption = int.parse(value!);
                         },
-                        onChanged: (value) => context
-                            .read<ButtonEnableCubit>()
-                            .updateFuelConsumption(true)),
+                        onChanged: (value) {
+                          if (value.contains(RegExp(r'[0-9]'))) {
+                            context
+                                .read<ButtonEnableCubit>()
+                                .updateFuelConsumption(true);
+                          }
+                        }),
                   ),
                 ],
               ),
@@ -100,9 +108,13 @@ class GasInputCard extends StatelessWidget {
                         onSaved: (value) {
                           inputData.startTrip = int.parse(value!);
                         },
-                        onChanged: (value) => context
-                            .read<ButtonEnableCubit>()
-                            .updateStartTrip(true)),
+                        onChanged: (value) {
+                          if (value.contains(RegExp(r'[0-9]'))) {
+                            context
+                                .read<ButtonEnableCubit>()
+                                .updateStartTrip(true);
+                          }
+                        }),
                   ),
                   const Text("End trip", style: bodyLarge),
                   SizedBox(
@@ -115,8 +127,11 @@ class GasInputCard extends StatelessWidget {
                       onSaved: (value) {
                         inputData.endTrip = int.parse(value!);
                       },
-                      onChanged: (value) =>
-                          context.read<ButtonEnableCubit>().updateEndTrip(true),
+                      onChanged: (value) {
+                        if (value.contains(RegExp(r'[0-9]'))) {
+                          context.read<ButtonEnableCubit>().updateEndTrip(true);
+                        }
+                      },
                     ),
                   ),
                 ],

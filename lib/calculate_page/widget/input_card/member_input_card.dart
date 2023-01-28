@@ -38,9 +38,13 @@ class MemberInputCard extends StatelessWidget {
                       cursorColor: orangeColor,
                       decoration: inputDecoration,
                       controller: _editingController,
-                      onChanged: (value) => context
-                          .read<ButtonEnableCubit>()
-                          .updateMemberButton(true),
+                      onChanged: (value) {
+                        if (value.contains(RegExp(r'\s\S'))) {
+                          context
+                              .read<ButtonEnableCubit>()
+                              .updateMemberButton(true);
+                        }
+                      },
                     ),
                   ),
                 ),
