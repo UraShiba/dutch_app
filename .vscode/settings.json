@@ -1,6 +1,8 @@
 {
   "cSpell.words": [
-    "listview"
+    "Datasource",
+    "listview",
+    "usecase"
   ],
   "cmake.configureOnOpen": false
 }

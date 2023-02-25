@@ -14,6 +14,7 @@ flutter_icons:
   image_path: "assets/icon/icon.png"
   adaptive_icon_background: "assets/icon/icon.png"
   adaptive_icon_foreground: "assets/icon/icon.png"
+
 dependencies:
   flutter:
     sdk: flutter
@@ -22,6 +23,7 @@ dependencies:
   flutter_bloc: ^8.1.1
   equatable: ^2.0.5
   shared_preferences: ^2.0.15
+  either_dart: ^0.3.0
 
 dev_dependencies:
   flutter_test:
