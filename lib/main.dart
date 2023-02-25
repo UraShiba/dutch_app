@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:dutch_app/android_app.dart';
-import 'package:dutch_app/ios_app.dart';
+import 'package:dutch_app/feature/home/android_app.dart';
+import 'package:dutch_app/feature/home/ios_app.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
